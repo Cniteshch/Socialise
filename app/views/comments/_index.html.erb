@@ -1,0 +1,20 @@
+<h2>Comments</h2>
+<ul class="list-group">
+    <% @post.comments.each do |comment| %>
+        <li class="list-group-item">
+            <a href="/users/<%= comment.user.slug %>">
+                <%= image_tag comment.user.avatar_url(:thumbnail) || 'avatar,jpg' , class: "img-responsive img-thumbnail avatar"%>
+            </a>
+            <%= link_to comment.user.name, user_path(comment.user.slug) %>
+                <%= render 'comment_edit_btn'  %>
+                                 <br>
+                                  <p class="postBody"><i><%=  comment.commentbody  %></i>
+                                                    <br>
+									<!-- duration start -->
+									<%= render 'comment_duration'  %>
+									<!-- duration end -->
+
+                                   </p>
+        </li>
+</ul>
+<% end %>

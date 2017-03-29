@@ -1,0 +1,11 @@
+<%= form_for ([@post, @post.comments.build]) do |f| %>
+    <div class="col-md-9">
+        <div class="form-group">
+            <%= f.text_area :commentbody, placeholder: 'Comment something....', class: 'form-control comment_body' %>
+                <%= f.hidden_field :user_id,  :value => current_user.id, class: 'form-control ', autofocus: true %>
+        </div>
+    </div>
+    <div class="col-md-3 padd">
+        <%= f.submit 'comment', :class => 'button btn btn-primary ' %>
+    </div>
+    <% end %>

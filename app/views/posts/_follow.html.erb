@@ -1,0 +1,13 @@
+
+
+<% if current_user.following?(@user) %>
+
+<%= link_to "Unfollow", unfollow_user_path(@user) , class: "btn btn-success" %>
+
+
+
+<% else %>
+<%= link_to "Follow", follow_user_path(@user) , class: "btn btn-primary" %>
+
+
+<% end %>

@@ -1,0 +1,93 @@
+<!-- Modal -->
+<div class="modal fade" id="following" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Following</h4>
+            </div>
+            <div class="modal-body">
+                <% if @user.all_follows == [] %>
+                    <p> You are not following anyone!</p>
+                    <% else %>
+                        <% @user.all_follows.each do |follow|  %>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= image_tag follow.followable.avatar_url(:display) || 'avatar.jpg' , class: "avatar img-responsive img-thumbnail"%>
+                                                </a>
+                                        </td>
+                                        <td>
+                                            <a class="profileName" href="/users/<%=  follow.followable.slug %>">
+                                                <%=  follow.followable.name %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <% end  %>
+                                <% end  %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- followers-->
+<div class="modal fade" id="followers" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Followers</h4>
+            </div>
+            <div class="modal-body">
+                <% if @user.followings == [] %>
+                    <p> You have no followers yet!</p>
+                    <% else %>
+                        <% @user.followings.each do |follow|  %>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <!-- profile picture -->
+                                            <%= image_tag follow.follower.avatar_url(:display) || 'avatar.jpg' , class: "notificationPicture img-responsive img-thumbnail"%>
+                                        </td>
+                                        <td>
+                                            <a class="profileName" href="/users/<%=  follow.follower.slug %>">
+                                                <%=  follow.follower.name %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <% end  %>
+                                <% end  %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->
+<div class="row">
+    <div class="col-md-offset-1 col-md-4">
+        <button type="button" class="btn btn-link well" data-toggle="modal" data-target="#followers">Followers
+            <br>
+            <%= @user.followings.count  %>
+        </button>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-link well" data-toggle="modal" data-target="#following">Following
+            <br>
+            <%= @user.all_follows.count  %>
+        </button>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>

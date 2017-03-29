@@ -1,0 +1,65 @@
+
+<% if current_user.voted_for? post  %>
+
+
+<% unless   post.get_upvotes.size < 2  %>
+
+<p><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal-<%= post.id %>"><i class="fa fa-thumbs-up"></i> you and <%=   post.get_upvotes.size - 1  %> other liked this</button>
+
+
+
+</p>
+
+  <% else %>
+<p><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal-<%= post.id %>"><i class="fa fa-thumbs-up"></i> you liked this</button>
+ 
+</p>
+<% end %>
+
+
+ <p><a class="  unlikeBtn " rel="nofollow" data-method="put" href="/posts/<%=   post.id  %>/unlike"><i class="fa fa-thumbs-down"> Unlike</i></a>
+ <a class=" comment_btn"  href="/posts/<%=   post.id  %>"><i class="fa fa-comment"> comment</i></a>
+
+
+</p>
+
+
+
+
+<% else %>
+
+<% if post.get_upvotes.size > 0 %>
+
+<p><button type="button"  class="btn btn-link" data-toggle="modal" data-target="#myModal-<%= post.id %>" ><i class="fa fa-thumbs-up"> </i> <%=   post.get_upvotes.size  %> likes</button>
+
+  <% else %>
+
+   <% end %>
+
+
+
+</p>
+
+
+
+
+ 
+
+  
+<p><a class="  likeBtn" rel="nofollow" data-method="put" href="/posts/<%=   post.id  %>/like"><i class="fa fa-thumbs-up"> Like</i></a>
+<a class="  comment_btn" href="/posts/<%=   post.id  %>"><i class="fa fa-comment"> comment</i></a>
+</p>
+
+<!-- comment count start  -->
+   <% if post.comments.count > 0 %>
+
+<a class="btn btn-link" href="/posts/<%=   post.id  %>"><i class="fa fa-comment"></i> <%=   post.comments.count  %> comments</a>
+
+<% end %>
+<!-- comment count end  -->
+
+<!-- time duration condition start  -->
+
+<%= render 'post_duration'  %>
+
+<!-- time duration condition end  -->

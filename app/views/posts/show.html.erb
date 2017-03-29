@@ -1,0 +1,206 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9 ">
+      
+        <div >
+               <div >
+             
+          <p >
+             <a href="/users/<%= @post.user.slug %>"> 
+
+<%= render 'avatar' %></a>
+
+</a>
+<%= link_to @post.user.name, user_path(@post.user.slug) %> posted a Post 
+
+<!-- Edit/Delete Button -->
+<%= render 'edit_post_btn' %>
+
+<!-- Edit/Delete Button -->
+          </p> 
+<p class="postBody"><i><%=  @post.body  %></i>
+<br>
+<br>
+
+<!-- like/comment section -->
+<% if current_user.voted_for? @post  %>
+
+
+<% unless   @post.get_upvotes.size < 2  %>
+
+<p><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"><i class="fa fa-thumbs-up"></i> you and <%=   @post.get_upvotes.size - 1  %> other liked this</button>
+
+
+   <% if @post.comments.count > 0 %>
+
+<a class="btn btn-link" href="/posts/<%=   @post.id  %>"><i class="fa fa-comment"></i> <%=   @post.comments.count  %> comments</a>
+
+
+<% else %>
+
+
+
+<% end %> 
+
+<!--  -->
+
+</p>
+
+  <% else %>
+<p><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"><i class="fa fa-thumbs-up"></i> you liked this</button>
+   <% if @post.comments.count > 0 %>
+
+<a class="btn btn-link" href="/posts/<%=   @post.id  %>"><i class="fa fa-comment"></i> <%=   @post.comments.count  %> comments</a>
+
+
+<% else %>
+
+
+
+<% end %> 
+</p>
+
+  
+
+
+   <% end %>
+
+
+ <p><a class="unlikeBtn " rel="nofollow"  data-method="put" href="/posts/<%=   @post.id  %>/unlike"><i class="fa fa-thumbs-down"> Unlike</i></a>
+ <a class=" comment_btn"  href="/posts/<%=   @post.id  %>"><i class="fa fa-comment"> comment</i></a>
+
+<!-- time duration condition start  -->
+
+<%= render 'post_duration' %>
+
+<!-- time duration condition end  -->
+</p>
+
+
+
+
+<% else %>
+
+<% if @post.get_upvotes.size > 0 %>
+
+<p><button type="button" data-toggle="modal" data-target="#myModal"  class="btn btn-link" ><i class="fa fa-thumbs-up"> </i> <%=   @post.get_upvotes.size  %> likes</button>
+
+  <% else %>
+
+   <% end %>
+
+
+   <% if @post.comments.count > 0 %>
+
+<a class="btn btn-link" href="/posts/<%=   @post.id  %>"><i class="fa fa-comment"></i> <%=   @post.comments.count  %> comments</a>
+
+
+
+</p>
+
+
+
+
+  <% else %>
+
+   <% end %>
+
+
+ 
+
+  
+<p><a class="  likeBtn" rel="nofollow" data-method="put" href="/posts/<%=   @post.id  %>/like"><i class="fa fa-thumbs-up"> Like</i></a>
+<a class="  comment_btn" href="/posts/<%=   @post.id  %>"><i class="fa fa-comment"> comment</i></a>
+<%= render 'post_duration' %>
+</p>
+
+<% end %>
+
+
+</p>
+<%= image_tag @post.name_url(:display) , class: "postBody"%>
+
+
+
+ <%= render 'comments/index'    %>
+               
+ <div class="padd row">
+
+ <%= render 'comments/new'    %>
+</div>
+
+    
+
+
+
+
+       
+
+
+			
+
+
+          <br>
+<!-- modal start -->
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close " data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Likes</h4>
+        </div>
+        <div class="modal-body">
+           <% @post.votes_for.voters.each do |liker| %>
+           <ul>
+               <li>
+                <% if  liker.avatar?  %>
+<%= image_tag liker.avatar_url(:thumbnail) , class: "img-responsive img-thumbnail avatar"%></a>
+<% else  %>
+
+<%= image_tag 'http://res.cloudinary.com/luckdrum/image/upload/v1488019339/avatar_ti4u17.jpg' , class: "avatar img-responsive img-thumbnail "%></a>
+
+
+<% end  %>
+
+               <%= link_to liker.name, user_path(liker.slug) %></li>
+               
+           </ul>
+          
+
+<% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- modal end -->
+
+
+
+
+
+
+
+
+         
+              <br>
+
+
+
+
+          
+</div>
+
+</div> 
+
+    </div>
+  </div>
+</div>

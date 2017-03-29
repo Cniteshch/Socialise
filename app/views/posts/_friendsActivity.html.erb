@@ -1,0 +1,17 @@
+<!-- notification -->
+<div class="userActivities ">
+    <h3>Friends's Activities</h3>
+    <% if @friendActivities == [] %>
+        <p> No activities yet!</p>
+        <% else %>
+            <% @friendActivities.each do |a| %>
+                <a class="" href="/posts/<%=  a.trackable_id %>">
+                    <%= render 'activity_specify' %>
+                </a>
+                    <!-- duration start -->
+                    <%= render 'duration' %>
+                        <!-- duration end -->
+                        </a>
+                        <% end%>
+                            <% end%>
+</div>

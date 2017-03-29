@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+
+  <div class="col-md-offset-1  col-md-8 ">
+    
+  
+    <h2>Find Friends</h2>
+
+
+   
+    <div class="">
+      <table class="table">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <%= render user %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

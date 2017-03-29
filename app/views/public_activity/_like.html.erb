@@ -1,0 +1,40 @@
+<% if current_user.voted_for? a.trackable  %>
+    <% unless a.trackable.get_upvotes.size < 2  %>
+        <button type="button" class="btn " data-toggle="modal" data-target="#myModal-<%= a.trackable.id %>"><i class="fa fa-thumbs-up"></i> you and
+            <%=   a.trackable.get_upvotes.size - 1  %> other liked this</button>
+        
+                </p>
+    <% else %>
+                    <p>
+                        <button type="button" class="btn" data-toggle="modal" data-target="#myModal-<%= a.trackable.id %>"><i class="fa fa-thumbs-up"></i> you liked this</button>
+                        
+                    </p>
+    <% end %>
+                        <p><a class="  unlikeBtn " rel="nofollow" data-method="put" href="/posts/<%=   a.trackable.id  %>/unlike"><i class="fa fa-thumbs-down"> Unlike</i></a>
+                            <a class="  comment_btn" href="/posts/<%=   a.trackable.id  %>"><i class="fa fa-comment"> comment</i></a>
+                           
+                        </p>
+<% else %>
+                            <% if a.trackable.get_upvotes.size > 0 %>
+                                <p>
+                                    <button type="button" class="btn " data-toggle="modal" data-target="#myModal-<%= a.trackable.id %>"><i class="fa fa-thumbs-up"> </i>
+                                        <%=   a.trackable.get_upvotes.size  %> likes</button>
+                                    <% else %>
+                                        <% end %>
+                                            
+                                </p>
+                                 <!-- comment count start -->
+                                <% if a.trackable.comments.count > 0 %>
+                                    <a class="btn " href="/posts/<%=   a.trackable.id  %>"><i class="fa fa-comment"></i> <%=   a.trackable.comments.count  %> comments</a>
+<% end %>
+                                <!-- comment count end -->
+
+
+                                    <!-- time duation start -->
+                                    <%= render 'duration' %>
+                                    <!-- time duration end  -->
+                                
+                                        <br>
+                                        <p><a class="  likeBtn" rel="nofollow" data-method="put" href="/posts/<%=   a.trackable.id  %>/like"><i class="fa fa-thumbs-up"> Like</i></a>
+                                            <a class="  comment_btn" href="/posts/<%=   a.trackable.id  %>"><i class="fa fa-comment"> comment</i></a>
+                                        </p>

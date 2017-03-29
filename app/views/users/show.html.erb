@@ -1,0 +1,43 @@
+<div class="row">
+    <div style="text-align: center;text-transform: capitalize;" class="col-md-3 padd profileName">
+        <% if  @user.avatar?  %>
+            <%= image_tag @user.avatar_url(:display) , class: "img-responsive img-rounded"%>
+                </a>
+                <% else  %>
+                    <%= image_tag 'http://res.cloudinary.com/luckdrum/image/upload/v1488019339/avatar_ti4u17.jpg' , class: "avatar_default img-responsive img-rounded "%>
+                        </a>
+                        <% end  %>
+                            <h3><%= @user.name  %></h3>
+                            <p>
+                                <%= @user.gender %>
+                            </p>
+                            <% if  @user.place?  %>
+                                <p> <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                    <%= @user.place %>
+                                </p>
+                                <% end  %>
+                                    <% if  @user == current_user  %>
+                                        <a href="/users/edit" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i>  Edit Profile</a>
+                                        <%= render 'posts/followlist'    %>
+                                            <% else  %>
+                                                <%= render 'posts/follow' %>
+                                                    <% end  %>
+                                                        <br>
+    </div>
+    <div class="col-md-9 padd">
+        <div class="row ">
+            <div class="col-md-9">
+                <% if  @user == current_user  %>
+                    <%= render 'posts/new'    %>
+                        <% else  %>
+                            <h2 class="profileName"><%= @user.name  %></h2>
+                            <%= render 'posts/followlist'    %>
+                                <% end  %>
+                                    <%= render 'posts/user_post'    %>
+            </div>
+            <div class="col-md-3">
+                <%= render 'userActivities'    %>
+            </div>
+        </div>
+    </div>
+</div>

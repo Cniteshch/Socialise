@@ -1,0 +1,95 @@
+<div class="">
+  <div class="">
+
+    <div class=" ">
+    <ul class="list-group">
+      <% @posts.each do |post| %>
+        
+               <li class="list-group-item">
+            
+             
+            
+          <p >  
+ <a href="/users/<%= @user.slug %>">          
+
+<%= image_tag @user.avatar_url(:thumbnail) || 'avatar.jpg'  , class: "img-responsive img-thumbnail avatar"%></a>
+
+          <%= link_to post.user.name, user_path(post.user.slug) %>
+ 
+<%= render 'edit_post_btn' %>
+          </p> 
+<p class="postBody"><i><%=  post.body  %></i>
+<br>
+
+
+
+</p>
+<%= image_tag post.name_url(:display) , class: "postBody"%>
+
+           
+
+       
+
+
+			
+
+
+          <br>
+<!-- modal start -->
+
+<div class="modal fade" id="myModal-<%= post.id %>" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close " data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Likes</h4>
+        </div>
+        <div class="modal-body">
+
+           <% post.votes_for.voters.each do |liker| %>
+            <ul class="">
+               <li class="">
+               
+<%= image_tag liker.avatar_url(:thumbnail) || 'avatar.jpg' , class: "img-responsive img-thumbnail avatar"%></a>
+
+
+
+<%= link_to liker.name, user_path(liker.slug) %></li>
+               
+           </ul>
+          
+
+<% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- modal end -->
+
+<!-- like/comment button section start  -->
+
+</p>
+
+<% end %>
+
+         
+              <br>
+
+
+
+
+          <% end %>
+</li>
+
+</ul> 
+
+    </div>
+  </div>
+</div>

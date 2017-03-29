@@ -1,0 +1,26 @@
+
+<div class="container">
+	
+
+
+<div class="row padd" >
+  <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+    
+  
+  <div class="col-md-9">
+  
+   <div class="form-group">
+    
+       <%= f.text_area :body, class: 'form-control' %>
+     </div>
+      <%= image_tag @post.name_url(:display) , class: "postBody"%>
+    </div>
+<div class="col-md-3 padd">
+  <%= f.submit 'Update', :class => 'button btn btn-primary post' %>
+
+</div>
+  <% end %>
+  
+</div>
+
+</div>

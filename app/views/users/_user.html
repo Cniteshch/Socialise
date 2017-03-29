@@ -1,0 +1,19 @@
+<% unless user.id == current_user.id %>
+    <td>
+        <a href="/users/<%= user.slug %>">
+            <%= image_tag user.avatar_url(:thumbnail) || 'avatar.jpg' , class: "img-responsive img-thumbnail avatar"%>
+        </a>
+    </td>
+    <td>
+        <a class="profileName" href="/users/<%= user.slug %>">
+            <%=  user.name  %>
+        </a>
+    </td>
+    <td>
+        <% if current_user.following?(user) %>
+            <%= link_to "Unfollow", unfollow_user_path(user) , class: "btn btn-success" %>
+                <% else %>
+                    <%= link_to "Follow", follow_user_path(user) , class: "btn btn-primary" %>
+                        <% end %>
+    </td>
+    <% end %>

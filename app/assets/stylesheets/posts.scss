@@ -1,0 +1,221 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$text_bg: 1px solid #286090 !important;
+$top:2%;
+.navbar-inverse {
+    background-color: #286090 !important;
+    border-color: #286090 !important;
+    color: #fff !important;
+    a {
+        color: #fff !important;
+    }
+}
+
+.notificationPicture {
+    width: 56px;
+    height: 40px;
+    padding: 0% 8%;
+}
+
+.notificationText {
+    color: #999 !important;
+    font-size: 10px;
+    a {
+        color: #999 !important;
+        font-size: 10px;
+    }
+    h3 {
+        text-align: center;
+    }
+}
+
+.profilename {
+    font-size: 17px !important;
+}
+
+h3 {
+    @extend .profilename;
+}
+
+.navbar > .container .navbar-brand,
+.navbar > main .navbar-brand,
+.navbar > .container-fluid .navbar-brand {
+    margin-left: -1px;
+    font-size: 30px;
+    margin-right: 2%;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    box-sizing: border-box;
+    background-clip: content-box;
+    border: 1px solid transparent;
+    border-radius: 49.9%;
+}
+
+.post {
+    width: 57%;
+    text-transform: uppercase;
+}
+
+#post_body {
+    border: $text_bg;
+}
+
+.padd {
+    margin-top: $top;
+}
+
+.navbar-nav {
+    float: left;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.created_at {
+    margin-left: 29%;
+    font-size: 13px;
+    spadding: 1% 0%;
+    color: #333;
+    margin-top: -3%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.btn-link:focus {
+    color: #23527c;
+    text-decoration: none !important;
+    background-color: transparent;
+    outline: none !important;
+}
+
+.btn-link:hover {
+    color: #23527c;
+    text-decoration: none !important;
+    background-color: transparent;
+    outline: none !important;
+}
+
+.edit {
+    margin-left: 25%;
+}
+
+.postBody {
+    margin-left: 10%;
+    text-transform: capitalize;
+    background: #ddd;
+    font-style: italic;
+}
+
+.profileName {
+    text-transform: capitalize;
+    color: #333333;
+    font-weight: 600;
+}
+
+.likeBtn {
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.unlikeBtn {
+    color: #337ab7;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.comment_body {
+    border: $text_bg;
+}
+
+.btn_right {
+    float: right;
+    margin: 1px;
+}
+
+.comment_btn {
+    margin-left: 16%;
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.btn-link {
+    color: #333 !important;
+    font-weight: normal;
+    border-radius: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+a {
+    color: #333;
+}
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+a:focus {
+    text-decoration: none !important;
+}
+
+.avatar_default {
+    width: 100%;
+}
+
+.poster {
+    float: right;
+}
+
+.userActivities {
+    font-size: 11px;
+    color: #999;
+}
+
+.notificationText .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: transparent !important;
+    color: #fff;
+}
+
+#errorExplanation h2 {
+    display: none !important;
+}
+
+.center {
+    text-align: center;
+}
+
+#intro a {
+    color: #b22724;
+    border: 2px solid #b22724;
+}

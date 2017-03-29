@@ -1,0 +1,11 @@
+<%= form_for :post, url:posts_path do |f| %>
+    <div class="form-group">
+        <%= f.text_area :body, placeholder: 'Post something....', class: 'form-control' %>
+            <label class="fileContainer">
+                <button type="" class="btn btn-primary"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                </button>
+                <%= f.file_field :name %>
+            </label>
+            <%= f.submit '  post  ', :class => 'btn btn-primary poster' %>
+    </div>
+    <% end %>

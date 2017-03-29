@@ -1,0 +1,6 @@
+<% if a.trackable.user_id == current_user.id %>
+
+<%= link_to ' ', a.trackable, :method => :delete,  data: {confirm: "You sure?"} , class: "btn btn-danger btn_right fa fa-trash-o " %>
+<%= link_to ' ', edit_post_path(a.trackable) , class: "btn btn-primary btn_right fa fa-edit"%> 
+
+ <% end %>

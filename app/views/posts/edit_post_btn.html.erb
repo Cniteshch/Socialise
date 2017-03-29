@@ -1,0 +1,6 @@
+<% if post.user_id == current_user.id %>
+<%= link_to ' ', post, :method => :delete,  data: {confirm: "You sure?"} , class: "btn btn-danger fa fa-trash-o btn_right" %>
+<%= link_to ' ', edit_post_path(post.id) , class: "btn btn-primary fa fa-edit btn_right "%> 
+
+
+ <% end %>

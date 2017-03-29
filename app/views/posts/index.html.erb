@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row padd">
+        <div style="text-align: center;text-transform: capitalize;" class="col-md-2 ">
+            <p>
+                <a href="/users/<%= current_user.id %>">
+                    <%= image_tag current_user.avatar_url(:display) || 'avatar.jpg'  , class: "img-responsive img-rounded"%>
+                        <%= current_user.name %>
+                </a>
+            </p>
+            <p>
+                <%= current_user.gender %>
+            </p>
+            <% if  current_user.place?  %>
+                <p> <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                    <%= current_user.place %>
+                </p>
+                <% end  %>
+                    <a href="/users/edit" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i>  Edit Profile</a>
+        </div>
+        <div class="col-md-10 ">
+            <div class="padd row">
+                <div class="col-md-9">
+                    <%= render 'new'    %>
+                    <%= render 'public_activity/activities' %>
+                </div>
+                <div class="col-md-3">
+                    <%= render 'public_activity/PublicfriendsActivity' %>
+                </div>
+            </div>
+            <!-- row end of new post -->
+        </div>
+    </div>
+</div>

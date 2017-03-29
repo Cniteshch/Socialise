@@ -1,0 +1,74 @@
+<div class="authform">
+  <h3>Edit Profile</h3>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <%= devise_error_messages! %>
+       <div class="form-group">
+
+       <label for="Picture">Change Profile Picture:</label><br>
+       
+   <% if  @user.avatar?  %>
+<%= image_tag @user.avatar_url(:thumbnail) || 'http://res.cloudinary.com/luckdrum/image/upload/v1488019339/avatar_ti4u17.jpg' , class: "img-responsive img-thumbnail avatar"%>
+
+  <%= f.file_field :avatar %>
+
+
+</div>
+
+
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+    </div>
+
+        <div class="form-group">
+      <%= f.label :gender %><br>
+      <%= f.select :gender, ['male', 'female'], class: 'form-control' %>
+    </div>
+
+        <div class="form-group">
+      <%= f.label :dob %>
+      <%= f.text_field :dob, :autofocus => true, "data-provide" => 'datepicker', placeholder: 'DD-MM-YYYY', class: 'form-control' %>
+    </div>
+
+        <div class="form-group">
+      <%= f.label :City %>
+      <%= f.text_field :place, :autofocus => true, id: 'address',placeholder: 'City', class: 'form-control' %>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    </div>
+    <fieldset>
+      <p>Leave these fields blank if you don't want to change your password.</p>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </fieldset>
+    <fieldset>
+      <p>You must enter your current password to make changes.</p>
+      <div class="form-group">
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, class: 'form-control' %>
+      </div>
+    </fieldset>
+    <%= f.submit 'Update', :class => 'button right' %>
+  <% end %>
+</div>
+<div class="authform">
+<h3>Deactivate Account</h3>
+
+<%= button_to "Deactivate my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+</div>

@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+<li><%= link_to current_user.name, user_path(current_user.slug) %></li>
+  
+<% else %>
+  <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+
+<% end %>
+<% if user_signed_in? %>
+  <li><%= link_to 'Find Friends', users_path %></li>
+  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+  <li style="float: right;" class="right"><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+
+<% end %>

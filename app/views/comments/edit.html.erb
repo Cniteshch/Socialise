@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row padd">
+        <%= form_for :comment, url: post_comment_path(@comment), method: :patch do |f| %>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <%= f.text_area :commentbody, class: 'form-control commentBody' %>
+                </div>
+            </div>
+            <div class="col-md-3 padd">
+                <%= f.submit 'Update', :class => 'button btn btn-primary post' %>
+            </div>
+            <% end %>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<ul class="list-group">
+    <% @activities.each do |a| %>
+        <li class="list-group-item">
+            <% if a.trackable %>
+              <%= link_to a.owner.name, user_path(a.owner.slug) , class: "profileName" %>
+                    <!-- Activity like/commented condition start -->
+              <%= render 'activity_specify' %>
+               <%= link_to 'post', post_path(a.trackable) %>
+               <br>
+                    <!-- like/commented condition  end-->
+            <div class=" list-group-item">
+                <a href="/users/<%= a.trackable.user.slug %>">
+                    <%= render   'avatar' %>
+                </a>
+                <%= link_to a.trackable.user.name, user_path(a.trackable.user.slug), class: "profileName" %>
+                    <!-- edit/delete for owner of Post  start  -->
+                    <%= render 'edit_activity_btn' %>
+                        <!-- edit/delete for owner of Post end   -->
+                        <p class="postBody"><i><%= a.trackable.body %></i></p>
+                        <!-- avatar  -->
+                        <%= link_to a.trackable.user.name, user_path(a.trackable.user.slug), class: "profileName" %>
+                            <a href="/users/<%= a.trackable.user.slug %>">
+                                <%= render 'activity_avatar' %>
+                            </a>
+                            <p class="postBody"><i><%= a.trackable.body %></i></p>
+                            <%= image_tag a.trackable.name_url(:display) , class: "postBody"%>
+                                </p>
+                  <!-- edit/delete for owner of Post condition end   -->
+
+
+                  <!-- Modal for Like list   -->
+                                <%= render 'modal_likes' %>
+                  <!-- Modal end  -->
+
+
+                                <p>
+         <!-- Like/ Unlike Button based on Current User like or comment start -->
+                                <%= render 'like' %>
+                                <%= render 'duration' %>
+          <!-- Like/ Unlike Button based on Current User like or comment  end -->
+                                </p>
+                 <% end %>
+            </div>
+            <% end %>
+        </li>
+</ul>
+<% end %>

@@ -1,0 +1,13 @@
+<% if a.key.match(/\.(.*)/)[1] == 'commented' %>
+    <span class="profileName"><%=  a.owner.name %></span>
+    <%= a.key.match(/\.(.*)/)[1] %> on <span class="profileName"><%=  a.recipient.name %></span> post
+        
+<% else %>
+    <% if a.key.match(/\.(.*)/)[1] == 'posted' %>
+                <span class="profileName"><%=  a.owner.name %></span> posted a Post.
+    <% else %>
+                    <span class="profileName"><%=  a.owner.name %></span>
+                    <%= a.key.match(/\.(.*)/)[1] %> <span class="profileName"><%=  a.recipient.name %></span>'s post
+                        <br>
+    <% end %>
+<% end %>

@@ -1,0 +1,48 @@
+<!-- notification start -->
+<ul class="dropdown-menu notification notificationText textarea-scrollbar ">
+    <% if  notifyActivities == [] %>
+        <h3 class=""> no notification yet!</h3>
+        <% else %>
+            <% notifyActivities.each do |a| %>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="width: 19%;">
+                                <a class="" href="/users/<%=  a.owner.slug %>">
+                                    <!-- avatar start-->
+                                    <%= image_tag a.owner.avatar_url(:display) || 'avatar.jpg' , class: "notificationPicture img-responsive img-thumbnail"%>
+                                        <!-- avatar end -->
+                                </a>
+                            </td>
+                            <td style="width: 81%;">
+                                <% if a.trackable_type == "User" %>
+                                    <a class="profileName" href="/users/<%=  a.owner.slug %>">
+                                        <span class="profileName"><%=  a.owner.name %></span> started Following you
+                                        <br>
+                                    </a>
+                                    <% else %>
+                                        <!--  like/comment notification  start-->
+                                        <a class="profileName" href="/posts/<%=  a.trackable_id %>">
+                                            <% if a.key.match(/\.(.*)/)[1] == 'commented' %>
+                                                <span class="profileName"><%=  a.owner.name %></span>
+                                                <%= a.key.match(/\.(.*)/)[1] %> on your post
+                                                    <br>
+                                                    <% else %>
+                                                        <span class="profileName"><%=  a.owner.name %></span>
+                                                        <%= a.key.match(/\.(.*)/)[1] %> your post
+                                                            <br>
+                                                            <% end %>
+                                        </a>
+                                        <!--  like/comment notification end-->
+                                        <% end %>
+                                            <!-- duration start -->
+                                            <%= render 'duration' %>
+                                                <!-- duration end -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <% end %>
+                    <% end %>
+                        </a>
+</ul>
